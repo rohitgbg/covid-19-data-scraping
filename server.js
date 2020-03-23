@@ -15,8 +15,9 @@ const server = app.listen(PORT, () => {
 });
 
 //body parser
-
 app.use(express.json());
+
+// Mount routes
 
 //middleware
 if (process.env.NODE_ENV === "development") {
