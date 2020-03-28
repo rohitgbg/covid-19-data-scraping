@@ -24,13 +24,11 @@ app.get("/scrape", (req, res) => {
   // The URL we will scrape from - in our example Anchorman 2.
   url = "https://www.mohfw.gov.in/";
 
-  const indianData = new Set();
+  const scrapedData = [];
 
-  request(url, function(error, response, html) {
+  request(url, async function(error, response, html) {
     if (!error) {
-      const scrapedData = [];
-
-      const $ = cheerio.load(html);
+      const $ = await cheerio.load(html);
       $(".newtab   .table-dark  tbody > tr ").each((index, element) => {
         const tds = $(element).find("td");
 
@@ -56,13 +54,11 @@ app.get("/scrape", (req, res) => {
         scrapedData.push(data);
       });
 
-      console.log(scrapedData);
+      res.status(200).json({
+        success: true,
+        data: scrapedData
+      });
     }
-  });
-
-  res.status(200).json({
-    success: true,
-    data: "Hello"
   });
 });
 
