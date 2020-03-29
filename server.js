@@ -3,6 +3,9 @@ const dotevn = require("dotenv");
 const morgan = require("morgan");
 const colors = require("colors");
 
+// Cron file
+// require("./cron");
+
 const connectDB = require("./config/db");
 
 //routes files
