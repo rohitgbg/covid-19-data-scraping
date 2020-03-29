@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const WorldDataSchema = new mongoose.Schema({
   country: {
-    type: String
+    type: String,
+    unique: true
   },
   totalCases: {
     type: String

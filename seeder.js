@@ -59,13 +59,18 @@ const insertDataToDB = async (
   overAllIndia
 ) => {
   try {
-    await WorldData.create(world);
     await IndianState.create(indianState);
     await OverAllWorld.create(overAllWorld);
     await OverAllIndian.create(overAllIndia);
+    await WorldData.create(world, { ordered: false });
 
     console.log(">>>>INSERT TO DB COMPLETED<<<<".green.bold);
   } catch (error) {
+    if (error && error.code == 11000) {
+      console.log(">>>>Duplicate data ignored<<<<".green.bold);
+      console.log(">>>>INSERT TO DB COMPLETED<<<<".green.bold);
+      return;
+    }
     console.log("ERROR-insertDataToDB:", error);
   }
 };

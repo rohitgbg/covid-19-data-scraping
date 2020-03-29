@@ -78,7 +78,8 @@ exports.worldData = async () => {
     }
   });
 
-  return data;
+  const result = removeDuplicates(data, "country");
+  return result;
 };
 
 exports.overAllWolrdData = async () => {
@@ -111,4 +112,18 @@ exports.overAllIndianData = async () => {
     totalRecovered: $(iBlockText[2]).text(),
     totalDeaths: $(iBlockText[3]).text()
   };
+};
+
+const removeDuplicates = (originalArray, prop) => {
+  var newArray = [];
+  var lookupObject = {};
+
+  for (var i in originalArray) {
+    lookupObject[originalArray[i][prop]] = originalArray[i];
+  }
+
+  for (i in lookupObject) {
+    newArray.push(lookupObject[i]);
+  }
+  return newArray;
 };
