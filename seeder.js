@@ -29,10 +29,10 @@ const connectDB = async () => {
 connectDB();
 
 // Load models
-const WorldData = require("./model/WorldData");
-const IndianState = require("./model/IndianStateData");
-const OverAllWorld = require("./model/OverAllWorldData");
-const OverAllIndian = require("./model/OverAllIndianData");
+const WorldData = require("./models/WorldData");
+const IndianState = require("./models/IndianStateData");
+const OverAllWorld = require("./models/OverAllWorldData");
+const OverAllIndian = require("./models/OverAllIndianData");
 
 //Scrape the data
 const scrapeData = async () => {
